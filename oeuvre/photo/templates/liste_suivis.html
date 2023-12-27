@@ -1,0 +1,22 @@
+<!-- liste_suivis.html -->
+{% extends 'base.html' %}
+
+{% block title %}Liste des Suivis{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4">Liste des Suivis</h2>
+        
+        {% if suivis %}
+            <ul>
+                {% for suivi in suivis %}
+                    <li>{{ suivi.suivi.username }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Vous ne suivez personne pour le moment.</p>
+        {% endif %}
+        
+        <p class="mt-4"><a href="{% url 'accueil' %}" class="btn btn-secondary">Retour à l'accueil</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- posts_utilisateur.html -->
+{% extends 'base.html' %}
+
+{% block title %}Mes Posts{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4">Mes Posts</h2>
+        
+        {% if publications_utilisateur %}
+            <ul>
+                {% for publication in publications_utilisateur %}
+                    <li>
+                        {{ publication.date_creation }} - {{ publication.titre }}
+                        <p>{{ publication.description }}</p>
+                        <img src="{{ publication.image.url }}" alt="{{ publication.titre }}" style="max-width: 400px; max-height: 400px;">
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Vous n'avez pas encore publié de posts.</p>
+        {% endif %}
+        <p class="mt-4"><a href="{% url 'accueil' %}" class="btn btn-secondary">Retour à l'accueil</a></p>
+    </div>
+{% endblock %}

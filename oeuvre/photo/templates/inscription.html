@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2 class="text-success">bienvenue sur la page Inscription</h2>
+    
+    <form method="post" action="{% url 'inscription' %}">
+        {% csrf_token %}
+        
+        {{ form.non_field_errors }}
+        
+        <div>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        
+        <div>
+            {{ form.nom.label_tag }}
+            {{ form.nom }}
+            {{ form.nom.errors }}
+        </div>
+        
+        <div>
+            {{ form.prenom.label_tag }}
+            {{ form.prenom }}
+            {{ form.prenom.errors }}
+        </div>
+
+        <div>
+            {{ form.date_naissance.label_tag }}
+            {{ form.date_naissance }}
+            {{ form.date_naissance.errors }}
+        </div>
+        
+        <div>
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+        
+        <div>
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
+        
+        <button type="submit">Inscription</button>
+    </form>
+    
+    <p>Vous avez déjà un compte ? <a href="{% url 'login' %}">Connectez-vous ici</a>.</p>
+
+
+{% endblock %}
+    

@@ -1,0 +1,65 @@
+<!-- creation_publication.html -->
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4">Création de Publication</h2>
+        
+        <form method="post" action="{% url 'publication' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                {{ form.titre.label_tag }}
+                {{ form.titre }}
+                {{ form.titre.errors }}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.description.label_tag }}
+                {{ form.description }}
+                {{ form.description.errors }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+                {{ form.image.errors }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Publier</button>
+        </form>
+        <h1 class="text-primary">ajouter un nouvel etudiant</h1>
+   <div class="row">
+    <div class="col-sm-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="ajouter">
+
+        </form>
+    </div>
+    <div class="col-sm-7 offset-1">
+      <h2 class="text-primary">affichage des informations des utilisateurs</h2>
+        <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NOM</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">PASSWORD</th>
+                <th scope="col">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for info in infos %}
+              <tr>
+                <th scope="row">{{publication.id}}</th>
+                <td>{{publication.createur}}</td>
+                <td>{{publication.title}}</td>
+                <td>{{publication.date_creation}}</td>
+                <td>
+        
+        <p class="mt-4"><a href="{% url 'accueil' %}" class="btn btn-secondary">Retour à l'accueil</a></p>
+    </div>
+{% endblock %}

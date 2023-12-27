@@ -1,0 +1,30 @@
+<!-- login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4 text-primary">Bienvenue sur la page de Connexion</h2>
+        
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+            <br>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+            
+            {{ form.password.label_tag }}
+            {{ form.password }}
+            {{ form.password.errors }}
+            
+            <button type="submit" class="btn btn-primary">Connexion</button>
+        </form>
+        
+        <p class="mt-4">Vous n'avez pas de compte ? <a href="{% url 'inscription' %}">Inscrivez-vous ici</a>.</p>
+    </div>
+{% endblock %}

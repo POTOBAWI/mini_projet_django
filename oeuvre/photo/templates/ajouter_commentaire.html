@@ -1,0 +1,24 @@
+<!-- ajouter_commentaire.html -->
+{% extends 'base.html' %}
+
+{% block title %}Ajouter un Commentaire{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4">Ajouter un Commentaire</h2>
+        
+        <p><strong>Publication:</strong> {{ publication.titre }}</p>
+        
+        <form method="post" action="{% url 'ajouter_commentaire' publication_id=publication.id %}">
+            {% csrf_token %}
+            
+            {{ form.contenu.label_tag }}
+            {{ form.contenu }}
+            {{ form.contenu.errors }}
+            
+            <button type="submit" class="btn btn-primary">Ajouter Commentaire</button>
+        </form>
+        
+        <p class="mt-4"><a href="{% url 'accueil' %}" class="btn btn-secondary">Retour à l'accueil</a></p>
+    </div>
+{% endblock %}

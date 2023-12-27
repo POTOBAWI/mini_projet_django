@@ -1,0 +1,18 @@
+<!-- mise_a_jour_profil.html -->
+{% extends 'base.html' %}
+
+{% block title %}Mise à Jour du Profil{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4">Mise à Jour du Profil<
+        <form method="post" action="{% url 'mise_a_jour_profil' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">Mettre à Jour</button>
+        </form>
+
+        <p class="mt-4"><a href="{% url 'accueil' %}" class="btn btn-secondary">Retour à l'accueil</a></p>
+    </div>
+{% endblock %}

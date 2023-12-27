@@ -1,0 +1,27 @@
+<!-- flux_social.html -->
+{% extends 'base.html' %}
+
+{% block title %}Flux Social{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5 mb-4">Flux Social</h2>
+
+        {% if publications_flux %}
+            <ul>
+                {% for publication in publications_flux %}
+                    <li>
+                        <strong>{{ publication.createur.username }}</strong> - {{ publication.date_creation }}
+                        <p>{{ publication.titre }}</p>
+                        <p>{{ publication.description }}</p>
+                        <img src="{{ publication.image.url }}" alt="{{ publication.titre }}" style="max-width: 400px; max-height: 400px;">
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Vous ne suivez personne, le flux est vide.</p>
+        {% endif %}
+        
+        <p class="mt-4"><a href="{% url 'accueil' %}" class="btn btn-secondary">Retour à l'accueil</a></p>
+    </div>
+{% endblock %}
